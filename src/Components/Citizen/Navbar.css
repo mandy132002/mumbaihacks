@@ -1,0 +1,27 @@
+.nav-container {
+    display: flex;
+    background-color: rgb(64, 78, 237);
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 10px 60px 10px 60px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+}
+
+.sos {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
