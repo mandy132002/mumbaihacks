@@ -5,7 +5,7 @@ const complaintSchema = mongoose.Schema({
     category:{type:String, required:true},
     image:{type:String, required:true},
     latitude:{type:String, required:true},
-    longitutde:{type:String, required:true}
+    longitude:{type:String, required:true}
 });
 
 
