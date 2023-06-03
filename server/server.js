@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import loginRoutes from './routes/loginRoutes.js'
+import complaintsRoutes from './routes/complaintsRoutes.js'
 
 
 const app = express();
@@ -14,8 +15,9 @@ app.use(bodyParser.urlencoded({limit:"30 mb", extended: true}));
 app.use(cors());
 
  app.use('/register', loginRoutes);
+ app.use('/complaints', complaintsRoutes);
 
-const PORT = 5000;
+const PORT = 5002;
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewURLParser: true, useUnifiedTopology: true})
     .then(() => {
