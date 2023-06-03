@@ -12,7 +12,6 @@ export const registerComplaints = async(req, res) => {
     }
 };
 
-
 export const getComplaints = async(req, res) => {
     try {
         const complaints = await complaint.find();

@@ -1,10 +1,61 @@
-import "./Report.css";
+import './Report.css';
+import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
+const initialState = {
+  title: '',
+  description: '',
+  confirmPassword: '',
+  role: 'citizen',
+  phoneNumber: '',
+};
 function Report() {
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  // const [form, setForm] = useState(initialState);
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    category: '',
+    latitude,
+    longitude,
+  });
+
+  useEffect(() => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Success: position object contains the coordinates
+          const { latitude, longitude } = position.coords;
+          // console.log("Latitude:", latitude);
+          setLatitude(latitude);
+
+          // console.log("Longitude:", longitude);
+          setLongitude(longitude);
+        },
+        (error) => {
+          // Error: handle the error or show an error message to the user
+          console.log(error);
+        }
+      );
+    } else {
+      // Geolocation API is not supported
+      console.log('Geolocation is not supported');
+    }
+  }, []);
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    
+  } 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="outer-container">
       <div className="form-container">
-        <form className="login-form">
+        <form onSubmit={handleSubmit} className="login-form">
           <div className="header-container">
             <h1 className="header">Report</h1>
           </div>
@@ -14,7 +65,7 @@ function Report() {
               <label htmlFor="title">Title: </label>
             </div>
             <div>
-              <input type="text" id="title" required />
+              <input onChange={handleChange} type="text" id="title" required />
             </div>
           </div>
           <div className="internal-form-container">
@@ -23,6 +74,7 @@ function Report() {
             </div>
             <div>
               <textarea
+                onChange={handleChange}
                 name="description"
                 id="description"
                 cols="20"
@@ -35,7 +87,12 @@ function Report() {
               <label htmlFor="category">Choose category: </label>
             </div>
             <div>
-              <select name="category" id="category">
+              <select
+                value={formData.category}
+                onChange={handleChange}
+                name="category"
+                id="category"
+              >
                 <option value="">Select</option>
                 <option value="fire">Fire Department</option>
                 <option value="police">Police Department</option>
@@ -53,7 +110,7 @@ function Report() {
             </div>
           </div>
           <div className="internal-form-container">
-            <button>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
