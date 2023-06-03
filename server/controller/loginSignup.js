@@ -43,16 +43,17 @@ export const signup = async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 12);
-
+    
     const result = await user.create({
       phoneNumber,
       email,
+      role:"citizen",
       password: hashedPassword,
       name,
     });
 
     const token = jwt.sign(
-      { email: result.email, id: result._id, phoneNumber: result.phoneNumber },
+      { email: result.email,role:result.role, id: result._id, phoneNumber: result.phoneNumber },
       secret,
       { expiresIn: '1h' }
     );
