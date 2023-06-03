@@ -1,0 +1,21 @@
+.card-container {
+    margin: 20px;
+    background-color: rgb(64, 78, 237);
+    color: white;
+    width: fit-content;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 5px black;
+    padding: 16px;
+}
+
+hr {
+    background-color: white;
+    margin: 10px;
+}
+
+img {
+    border-radius: 10px;
+    border: 2px solid white;
+}
