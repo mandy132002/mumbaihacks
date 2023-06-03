@@ -2,7 +2,7 @@ import './Report.css';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
+import {complaint} from '../../api';
 function Report() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
@@ -11,9 +11,11 @@ function Report() {
     title: '',
     description: '',
     category: '',
-    latitude,
-    longitude,
+    image:'',
+    latitude:'',
+    longitude:'',
   });
+
 
   useEffect(() => {
     if ('geolocation' in navigator) {
@@ -39,11 +41,28 @@ function Report() {
   }, []);
   const handleSubmit = async (e) =>{
     e.preventDefault();
-    
+    const updatedFormData = { ...formData, latitude, longitude };
+    await complaint(updatedFormData);
+    console.log('product added');
   } 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const convertToBase64 =(e) =>{
+    e.preventDefault();
+    var reader = new FileReader();
+    // image converted to base64
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () =>{
+      // console.log(reader.result);
+      setFormData((prevState) => ({ ...prevState, image: reader.result }))
+    };
+    reader.onerror = error =>{
+      console.log("Error: ",error);
+    };
+
+  }
 
   return (
     <div className="outer-container">
@@ -58,7 +77,7 @@ function Report() {
               <label htmlFor="title">Title: </label>
             </div>
             <div>
-              <input onChange={handleChange} type="text" id="title" required />
+              <input name="title" onChange={handleChange} type="text" id="title" required />
             </div>
           </div>
           <div className="internal-form-container">
@@ -99,7 +118,7 @@ function Report() {
               <label htmlFor="fileUpload">Upload File: </label>
             </div>
             <div className="fileUpload">
-              <input type="file" id="file" name="file" accept="image/*" />
+              <input onChange={convertToBase64} type="file" id="file" name="image" accept="image/*" />
             </div>
           </div>
           <div className="internal-form-container">

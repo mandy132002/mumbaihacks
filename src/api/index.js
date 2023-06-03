@@ -14,5 +14,6 @@ export const signup = async (formData) => {
 }
 
 export const complaint = async (formData) => {
-    const res = await API.post('/complaints', formData);
+    console.log(formData);
+    const res = await API.post('/complaints/registerComplaints', formData);
 }
