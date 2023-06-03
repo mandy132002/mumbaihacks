@@ -12,3 +12,4 @@ export const signup = async (formData) => {
     const res = await API.post('/register/signup', formData);
     localStorage.setItem("profile", JSON.stringify(res.data.token))
 }
+
