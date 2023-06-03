@@ -4,9 +4,12 @@ import Login from "./Components/Citizen/Login.jsx";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import GovernmentHome from "./Components/Government/GovernmentHome";
 import CitizenHome from "./Components/Citizen/CitizenHome";
+import KnownIssueCard from "./Components/Citizen/KnownIssueCard";
+
 function App() {
   return (
     <>
+    <KnownIssueCard/>
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Login/>}/>
