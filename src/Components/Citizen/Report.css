@@ -28,6 +28,7 @@ textarea {
     border-radius: 10px;
     resize: none;
     padding: 5px;
+    border: 0px;
 }
 
 .fileUpload {
@@ -42,7 +43,6 @@ textarea {
 
 input {
     border-radius: 10px;
-    border: 0px;
     padding: 5px;
 }
 
@@ -59,8 +59,13 @@ button {
     border: 0px;
     border-radius: 10px;
 }
+
 label {
     margin-right: 10px;
+}
+
+select {
+    border: 0px;
 }
 
 .outer-container {
@@ -73,14 +78,13 @@ label {
 }
 
 .form-container {
-    width: 60%;
-    color: white;
-    background-color: rgb(64, 78, 237);
+    width: 50%;
+    color: black;
+    background-color: #ffe9aa;
     display: flex;
-    border: 1px solid black;
     border-radius: 20px;
     justify-content: center;
-    box-shadow: 10px 10px 5px black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .internal-form-container {
