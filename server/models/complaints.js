@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 const complaintSchema = mongoose.Schema({
     title:{type: String,required:true},
     discription:{type:String, required:true},
-    category:{type:String,default:'hehe'},
-    image:{type:String}
+    category:{type:String, required:true},
+    image:{type:String, required:true}
 });
 
 
