@@ -13,3 +13,6 @@ export const signup = async (formData) => {
     localStorage.setItem("profile", JSON.stringify(res.data.token))
 }
 
+export const complaint = async (formData) => {
+    const res = await API.post('/complaints', formData);
+}
