@@ -8,6 +8,7 @@ function Login() {
           <div className="header-container">
             <h1 className="header">Log In</h1>
           </div>
+          <hr />
           <div className="internal-form-container">
             <div>
               <label htmlFor="userId">User ID: </label>
@@ -15,7 +16,6 @@ function Login() {
             <div>
               <input type="text" id="userId" required />
             </div>
-            
           </div>
           <div className="internal-form-container">
             <div>

@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+#category {
+    padding: 5px;
+    box-sizing: content-box;
+    width: 200px;
+    border-radius: 10px;
+}
+
+hr {
+    background-color: white;
+    margin: 10px;
+}
+
 .header {
     font-size: 32px;
 }
@@ -12,9 +24,14 @@ label {
     padding: 3px;
 }
 
-hr {
-    background-color: white;
-    margin: 10px;
+textarea {
+    border-radius: 10px;
+    resize: none;
+    padding: 5px;
+}
+
+.fileUpload {
+    width: 50%;
 }
 
 .header-container {
@@ -56,7 +73,7 @@ label {
 }
 
 .form-container {
-    width: 40%;
+    width: 60%;
     color: white;
     background-color: rgb(64, 78, 237);
     display: flex;
