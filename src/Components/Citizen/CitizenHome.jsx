@@ -1,9 +1,12 @@
-import React from 'react'
-import Navbar from './Navbar'
-export default function CitizenHome() {
+import React from "react";
+import Navbar from "./Navbar";
+
+function CitizenHome() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
     </>
-  )
+  );
 }
+
+export default CitizenHome;
