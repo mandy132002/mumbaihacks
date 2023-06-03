@@ -1,0 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+
+button {
+    padding: 4px;
+}
+
+.form-container {
+    color: white;
+    background-color: rgb(64, 78, 237);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.internal-form-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
