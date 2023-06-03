@@ -1,9 +1,9 @@
 import complaint from '../models/complaints.js';
 
 export const registerComplaints = async(req, res) => {
-    const { title, discription, category , image } = req.body;
+    const { title, discription, category , image, latitude, longitude} = req.body;
     try {
-        const result = await complaint.create({ title, discription, category, image});
+        const result = await complaint.create({ title, discription, category, image, latitude, longitude});
 
         res.status(201).json({ result });
     } catch (error) {
