@@ -13,7 +13,6 @@ label {
 }
 
 hr {
-    background-color: white;
     margin: 10px;
 }
 
@@ -55,15 +54,14 @@ label {
     box-shadow: 10px 10px;
 }
 
-.form-container {
-    width: 40%;
-    color: white;
-    background-color: rgb(64, 78, 237);
+.form-container-login {
+    color: black;
+    width: 30%;
+    background-color: #ffe9aa;
     display: flex;
-    border: 1px solid black;
     border-radius: 20px;
     justify-content: center;
-    box-shadow: 10px 10px 5px black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .internal-form-container {

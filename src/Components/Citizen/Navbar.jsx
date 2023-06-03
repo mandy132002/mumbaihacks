@@ -1,11 +1,8 @@
 import "./Navbar.css";
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
-
-
 function Navbar() {
-  
   return (
     <>
       <div className="nav-container">
@@ -15,9 +12,7 @@ function Navbar() {
         <div>
           <ul>
             <li className="nav-item">
-                <Link to={`/report`}>
-                Report
-                </Link>
+              <Link to={`/report`}>Report</Link>
             </li>
             <li>
               <a href="#report" className="nav-item">
