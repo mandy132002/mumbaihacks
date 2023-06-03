@@ -17,7 +17,7 @@ app.use(cors());
  app.use('/register', loginRoutes);
  app.use('/complaints', complaintsRoutes);
 
-const PORT = 5000;
+const PORT = 5002;
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewURLParser: true, useUnifiedTopology: true})
     .then(() => {
