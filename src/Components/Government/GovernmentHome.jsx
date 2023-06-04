@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../Citizen/Navbar'
+import Navbar from '../Government/Navbar'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 
@@ -36,15 +36,14 @@ export default function GovernmentHome() {
   return (
     <>
       <Navbar/>
-      <button onClick={handleSubmit}>Update Status</button>
-      
-      <div className="requests">
+      <button className="bg-green-500 h-16 w-96 flex mx-auto text-black" onClick={handleSubmit}><span className="my-auto mx-auto">Update Status</span></button>
+      <div className="requests grid grid-cols-3 gap-4 ">
       { requests.map((request, index) => (
-      <div className="card"> 
-        <div>{request.title}</div>
-        <img width = "150" src={request.image} alt="Img" />
+      <div className="card m-5 shadow-2xl border rounded-xl"> 
+        <p className="font-bold text-3xl">{request.title}</p>
+        <img width= "150" height="150" src={request.image} alt="Img" />
         <div>{request.category}</div>
-        <button>Manual Verify</button>
+        <button className="w-2/3 mx-auto mb-10 flex"><span className="mx-auto">Manual Verify</span></button>
       </div>
       ))}
     </div>

@@ -45,14 +45,14 @@ def cluster():
     labels = dbscan.labels_
     num_clusters = len(set(labels)) - (1 if -1 in labels else 0)
 
-        for j in range(len(latitude)+1):
+    for j in range(len(latitude)+1):
             if not positions_considered[j]:
                 distance = (((float(latitude[j]) - ref_lat)**2 + (float(longitude[j]) - ref_long)**2)**(1/2))
 
             if distance <= radius:
                 positions_considered.append(j)
 
-        if len(positions_considered) >= 2:
+    if len(positions_considered) >= 2:
             for k in range(len(positions_considered)):
                 poistions_consisdered[k] = True
             res.append(positions_considered.copy())
