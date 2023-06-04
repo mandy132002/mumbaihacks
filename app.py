@@ -4,6 +4,13 @@ from scipy.spatial.distance import cdist
 from flask_cors import CORS
 import numpy as np
 import pygeodesic.geodesic as geodesic
+from urllib.request import urlopen
+import json
+import math
+from sklearn.cluster import DBSCAN
+import numpy as np
+from collections import Counter
+
 
 
 app = Flask(__name__)
@@ -18,24 +25,25 @@ CORS(app)
 
 @app.route('/cluster', methods=['POST'])
 def cluster():
-    # Get the JSON data from the request
-    # data = list(collection.find())
-    data = request.get_json()
-    request_ids, latitude, longitude = [], [], []
-    # print(data)
-    for i in range(len(data["complaints"])):
-
-        request_ids.append(data["complaints"][i]['_id'])
-        latitude.append(data["complaints"][i]['latitude'])
-        longitude.append(data["complaints"][i]['longitude'])
-        # arr.append((data["complaints"][i]['latitude'],data["complaints"][i]['longitude']))
-    positions_considered = [False]*len(latitude)
-    print(len(positions_considered))
-    radius = 5000
-    res =[]
-    for i in range(len(latitude)):
-        ref_lat = float(latitude[i])
-        ref_long = float(longitude[i])
+    url = "http://localhost:5002/complaints/getComplaints"
+    response = urlopen(url)
+    data = json.loads(response.read())
+    complaints = data["complaints"]
+    n = len(complaints)
+    ids = []
+    array = []
+    for i in range(n):
+        arr = []
+        ids.append(data["complaints"][i]['_id'])
+        arr.append(float(data["complaints"][i]['latitude']))
+        arr.append(float(data["complaints"][i]['longitude']))
+        array.append(arr.copy())
+    
+    geo_data = np.array(array[:])
+    dbscan = DBSCAN(eps=0.1, min_samples=2)
+    dbscan.fit(geo_data)
+    labels = dbscan.labels_
+    num_clusters = len(set(labels)) - (1 if -1 in labels else 0)
 
         for j in range(len(latitude)+1):
             if not positions_considered[j]:
@@ -46,7 +54,7 @@ def cluster():
 
         if len(positions_considered) >= 2:
             for k in range(len(positions_considered)):
-                positions_considered[k] = True
+                poistions_consisdered[k] = True
             res.append(positions_considered.copy())
     return jsonify(data)
 

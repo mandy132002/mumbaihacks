@@ -22,7 +22,6 @@ export default function GovernmentHome() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
       
       const response = await axios.post('http://127.0.0.1:5000/cluster', requests);
