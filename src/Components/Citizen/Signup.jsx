@@ -83,7 +83,7 @@ function Signup() {
               <label htmlFor="mobileNumber">Mobile Number: </label>
             </div>
             <div>
-              <input name="mobilenumber" onChange={handleChange} type="number" id="email" required />
+              <input name="phoneNumber" onChange={handleChange} type="number" id="email" required />
             </div>
           </div>
           <div className="internal-form-container">
@@ -99,7 +99,7 @@ function Signup() {
               <label htmlFor="confirmPassword">Confirm Password: </label>
             </div>
             <div>
-              <input name="confirmpassword" onChange={handleChange} type="password" id="confirmPassword" required />
+              <input name="confirmPassword" onChange={handleChange} type="password" id="confirmPassword" required />
             </div>
           </div>
           <div className="internal-form-container">
