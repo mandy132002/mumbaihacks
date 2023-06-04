@@ -13,8 +13,8 @@ export default function GovernmentHome() {
   const fetchRequests = async () => {
     try {
       const response = await axios.get('http://localhost:5002/complaints/getComplaints');
-      const fetchedRequests = response.data;
-      // console.log(fetchedRequests);
+      const fetchedRequests = response.data.complaints;
+      //console.log(fetchedRequests);
       setRequests(fetchedRequests);
     } catch (error) {
       console.error('Error fetching requests:', error);
@@ -37,6 +37,18 @@ export default function GovernmentHome() {
     <>
       <Navbar/>
       <button onClick={handleSubmit}>Update Status</button>
+      
+      <div className="requests">
+      { requests.map((request, index) => (
+      <div className="card"> 
+        <div>{request.title}</div>
+        <img width = "150" src={request.image} alt="Img" />
+        <div>{request.category}</div>
+        <button>Manual Verify</button>
+      </div>
+      ))}
+    </div>
+      {/* <button onClick={handleSubmit}>Update Status</button> */}
     </>
 
   )

@@ -14,8 +14,8 @@ app.use(bodyParser.json({limit:"30 mb", extended: true}));
 app.use(bodyParser.urlencoded({limit:"30 mb", extended: true}));
 app.use(cors());
 
- app.use('/register', loginRoutes);
- app.use('/complaints', complaintsRoutes);
+app.use('/register', loginRoutes);
+app.use('/complaints', complaintsRoutes);
 
 const PORT = 5002;
 
