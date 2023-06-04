@@ -46,8 +46,28 @@ def cluster():
     num_clusters = len(set(labels)) - (1 if -1 in labels else 0)
 
     counts = Counter(labels)
+    listOfLabels = list(labels)
+    myMap = {}
+
+    for i in range(len(listOfLabels)):
+        if listOfLabels[i] in myMap:
+            myMap[listOfLabels[i]].append(i)
+        else:
+            myMap[listOfLabels[i]] = [i]
+
+    print(myMap)
     
-    return str(labels)
+    result = []
+    for key, val in myMap.items():
+        arr = []
+        if len(val) >= 3:
+            for index in val:
+                arr.append((array[index].copy()))
+                arr.append(ids[index])
+            result.append(arr.copy())
+    
+    print(result)
+    return str(result)
 
 # Run the Flask server
 if __name__ == '__main__':
