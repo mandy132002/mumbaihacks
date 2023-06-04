@@ -22,21 +22,20 @@ def cluster():
     # data = list(collection.find())
     data = request.get_json()
     request_ids, latitude, longitude = [], [], []
-    print(data)
+    # print(data)
     for i in range(len(data["complaints"])):
 
         request_ids.append(data["complaints"][i]['_id'])
         latitude.append(data["complaints"][i]['latitude'])
         longitude.append(data["complaints"][i]['longitude'])
         # arr.append((data["complaints"][i]['latitude'],data["complaints"][i]['longitude']))
-    poistions_consisdered = [False]*len(latitude)
-    print(len(poistions_consisdered))
+    positions_considered = [False]*len(latitude)
+    print(len(positions_considered))
     radius = 5000
     res =[]
     for i in range(len(latitude)):
         ref_lat = float(latitude[i])
         ref_long = float(longitude[i])
-        positions_considered = []
 
         for j in range(len(latitude)+1):
             if not positions_considered[j]:
@@ -47,7 +46,7 @@ def cluster():
 
         if len(positions_considered) >= 2:
             for k in range(len(positions_considered)):
-                poistions_consisdered[k] = True
+                positions_considered[k] = True
             res.append(positions_considered.copy())
     return jsonify(data)
 
