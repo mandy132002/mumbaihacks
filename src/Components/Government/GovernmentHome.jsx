@@ -41,7 +41,7 @@ export default function GovernmentHome() {
       { requests.map((request, index) => (
       <div className="card m-5 shadow-2xl border rounded-xl"> 
         <p className="font-bold text-3xl">{request.title}</p>
-        <img width= "150" height="150" src={request.image} alt="Img" />
+        <img className="h-40" src={request.image} alt="Img" />
         <div>{request.category}</div>
         <button className="w-2/3 mx-auto mb-10 flex"><span className="mx-auto">Manual Verify</span></button>
       </div>
