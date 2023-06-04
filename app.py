@@ -45,18 +45,29 @@ def cluster():
     labels = dbscan.labels_
     num_clusters = len(set(labels)) - (1 if -1 in labels else 0)
 
-    for j in range(len(latitude)+1):
-            if not positions_considered[j]:
-                distance = (((float(latitude[j]) - ref_lat)**2 + (float(longitude[j]) - ref_long)**2)**(1/2))
+    counts = Counter(labels)
+    listOfLabels = list(labels)
+    myMap = {}
 
-            if distance <= radius:
-                positions_considered.append(j)
+    for i in range(len(listOfLabels)):
+        if listOfLabels[i] in myMap:
+            myMap[listOfLabels[i]].append(i)
+        else:
+            myMap[listOfLabels[i]] = [i]
 
-    if len(positions_considered) >= 2:
-            for k in range(len(positions_considered)):
-                poistions_consisdered[k] = True
-            res.append(positions_considered.copy())
-    return jsonify(data)
+    print(myMap)
+    
+    result = []
+    for key, val in myMap.items():
+        arr = []
+        if len(val) >= 3:
+            for index in val:
+                arr.append((array[index].copy()))
+                arr.append(ids[index])
+            result.append(arr.copy())
+    
+    print(result)
+    return str(result)
 
 # Run the Flask server
 if __name__ == '__main__':
